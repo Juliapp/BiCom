@@ -7,7 +7,31 @@ package util;
 public class Settings {
     
     public enum Servidores{
+        SERVER_A("localhost", "Azul", 4000),
+        SERVER_B("localhost", "Gol", 4001),
+        MY_SERVER("localhost", "Latam", 1099);
         
+        private final String host;
+        private final String nome;
+        private final int port;
+
+        private Servidores(String host, String nome, int port) {
+            this.host = host;
+            this.nome = nome;
+            this.port = port;
+        }
+
+        public String getHost() {
+            return host;
+        }
+
+        public String getNome() {
+            return nome;
+        }
+
+        public int getPort() {
+            return port;
+        }
         
         
     }
@@ -31,8 +55,7 @@ public class Settings {
         
         public String getEstado(){
             return estado;
-        }
-                
+        }     
     }
     
 }

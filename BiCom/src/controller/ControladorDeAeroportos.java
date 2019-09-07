@@ -1,7 +1,8 @@
-package model;
+package controller;
 
 import java.util.HashMap;
 import java.util.Map;
+import model.Aeroporto;
 import util.Settings;
 
 public final class ControladorDeAeroportos {
@@ -15,8 +16,7 @@ public final class ControladorDeAeroportos {
     public void initializeAeroportos(){
         for (Settings.EnumAeroportos a : Settings.EnumAeroportos.values()) {
             aeroportos.put(a.getEstado(), new Aeroporto(a.getNome(), a.getEstado()));
-        }        
-        
+        }          
     }
     
 
