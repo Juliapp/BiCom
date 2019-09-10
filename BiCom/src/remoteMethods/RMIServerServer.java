@@ -22,6 +22,8 @@ public class RMIServerServer {
             LocateRegistry.createRegistry(MY_SERVER.getPort());
             ServerMethodsImple smi = new ServerMethodsImple("a");
             Naming.bind("ServerService", (Remote) smi);  
+            ServerUserImple sui = new ServerUserImple();
+            Naming.bind("UserService", (Remote) sui);
         } catch (RemoteException | MalformedURLException | AlreadyBoundException ex) {
             Logger.getLogger(RMIServerServer.class.getName()).log(Level.SEVERE, null, ex);
         }

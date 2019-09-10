@@ -8,6 +8,7 @@ public class BiCom {
         Facade f = new Facade();
         f.initServer();
 
+
     }
     
 }

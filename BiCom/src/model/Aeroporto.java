@@ -5,6 +5,7 @@ package model;
  * @author Juliana
  */
 public class Aeroporto {
+    private static final long serialVersionUID = 5L;
     private String estado;
     private String nome;
 

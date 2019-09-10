@@ -1,11 +1,13 @@
 package remoteMethods;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
+import util.MapVerticesEArestas;
 
 public interface InterfaceServerServer extends Remote{
     
-//    public List<List<Trecho>> getPaths(String estA, String estB) throws RemoteException;
+    public MapVerticesEArestas getGrafo() throws RemoteException;
     
-    
+    public String getCompanhia() throws RemoteException;
     
 }
