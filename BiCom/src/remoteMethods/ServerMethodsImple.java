@@ -21,11 +21,9 @@ public class ServerMethodsImple extends UnicastRemoteObject implements Interface
         return companhia;
     }
     
-    
     @Override
     public MapVerticesEArestas getGrafo(){
         return facade.getGrafo();
     }
-    
     
 }

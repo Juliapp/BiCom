@@ -8,7 +8,6 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static util.Settings.Servidores.MY_SERVER;
 
 /**
  *
@@ -16,14 +15,17 @@ import static util.Settings.Servidores.MY_SERVER;
  */
 public class RMIServerServer {
 
-    public RMIServerServer(){
+    public RMIServerServer(int port, String companhia){
         try {
             System.setProperty("java.rmi.server.hostname", "localhost");
-            LocateRegistry.createRegistry(MY_SERVER.getPort());
-            ServerMethodsImple smi = new ServerMethodsImple("a");
+            LocateRegistry.createRegistry(port);
+            
+            ServerMethodsImple smi = new ServerMethodsImple(companhia);
             Naming.bind("ServerService", (Remote) smi);  
+            
             ServerUserImple sui = new ServerUserImple();
             Naming.bind("UserService", (Remote) sui);
+            
         } catch (RemoteException | MalformedURLException | AlreadyBoundException ex) {
             Logger.getLogger(RMIServerServer.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -10,7 +10,6 @@ public class Passagem {
     private final String companhia;
     private double preco;
     private int vagas;
-    private boolean flag = false;
        
     public Passagem(double preco, String companhia) {
         this.companhia = companhia;
@@ -18,14 +17,6 @@ public class Passagem {
         this.vagas = 10;
     }
 
-    public boolean isFlag() {
-        return flag;
-    }
-
-    public void setFlag(boolean flag) {
-        this.flag = flag;
-    }
-    
     public double getPreco() {
         return preco;
     }
@@ -42,8 +33,4 @@ public class Passagem {
         this.vagas = vagas;
     }
 
-    
-    
-    
-    
 }

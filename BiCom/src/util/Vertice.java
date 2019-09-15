@@ -11,7 +11,7 @@ import model.Aeroporto;
 public class Vertice {
     private static final long serialVersionUID = 4L;
     private final Aeroporto aeroporto;
-    private List<Aresta> arestas;
+    private final List<Aresta> arestas;
 
     public Vertice(Aeroporto aeroporto) {
         this.aeroporto = aeroporto;

@@ -2,14 +2,14 @@ package util;
 
 /**
  *Classe de utilitários.
- * @author Juliana
+ * @author Juliana Aragão Pinto
  */
 public class Settings {
     
     public enum Servidores{
-        SERVER_A("localhost", "Azul", 4000),
-        SERVER_B("localhost", "Gol", 4001),
-        MY_SERVER("localhost", "Latam", 1099);
+        AZUL("localhost", "Azul", 4000),
+        GOL("localhost", "Gol", 4001),
+        LATAM("localhost", "Latam", 1099);
         
         private final String host;
         private final String nome;
@@ -87,7 +87,7 @@ public class Settings {
         }
         
     }
-    
+    /*
     public enum Rotas{
         ROTA1("Azul", ),
         ROTA2("Azul", ),
@@ -164,5 +164,5 @@ public class Settings {
 
         
     }
-    
+    */
 }

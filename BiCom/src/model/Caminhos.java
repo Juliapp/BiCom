@@ -9,7 +9,7 @@ import util.Aresta;
  */
 public class Caminhos {
     private static final long serialVersionUID = 2L;
-    private List<List<Aresta>> possibilidades;
+    private final List<List<Aresta>> possibilidades;
 
     public Caminhos(List<List<Aresta>> possibilidades) {
         this.possibilidades = possibilidades;

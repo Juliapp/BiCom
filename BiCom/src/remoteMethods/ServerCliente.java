@@ -10,11 +10,12 @@ import java.rmi.RemoteException;
  * @author Juliana
  */
 public class ServerCliente {
+    private final String nome;
     private final String host;
     private final int port;
-    private final String service = "Service";
 
-    public ServerCliente(String host, int port) {
+    public ServerCliente(String nome, String host, int port) {
+        this.nome = nome;
         this.host = host;
         this.port = port;
     }  
@@ -24,14 +25,3 @@ public class ServerCliente {
     }
     
 }
-
-//public class CalculadoraClient {
-//    public static void main(String[] args){
-//        try{
-//            Calculadora c = (Calculadora) Naming.lookup("rmi://localhost/ServerService");
-//            System.out.println("Adição : " + c.add(10, 15));
-//        }catch(MalformedURLException | NotBoundException | RemoteException e){
-//            System.err.println(e);
-//        }
-//    }
-//}
