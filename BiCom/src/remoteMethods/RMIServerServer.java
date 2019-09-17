@@ -28,7 +28,7 @@ public class RMIServerServer {
             Naming.bind("UserService" + companhia, (Remote) sui);
             System.out.println("Objeto a ser compartilhado para os clientes passou pelo método de bind...");
             
-            System.out.println("Servidor da companhia" + companhia + "pronto para trocar mensagens");
+            System.out.println("Servidor da companhia " + companhia + " pronto para trocar mensagens");
         } catch (RemoteException | MalformedURLException | AlreadyBoundException ex) {
             Logger.getLogger(RMIServerServer.class.getName()).log(Level.SEVERE, null, ex);
         }
