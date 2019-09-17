@@ -1,6 +1,6 @@
 package util;
 
-import com.sun.javafx.scene.control.skin.VirtualFlow.ArrayLinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import model.Aeroporto;
 
@@ -15,7 +15,7 @@ public class Vertice {
 
     public Vertice(Aeroporto aeroporto) {
         this.aeroporto = aeroporto;
-        arestas = new ArrayLinkedList<>();
+        arestas = new ArrayList<>();
     }
     
     public boolean hasAresta(){
