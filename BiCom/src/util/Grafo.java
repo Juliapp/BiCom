@@ -21,8 +21,12 @@ public class Grafo {
         return map;
     }
     
-    public void mergeMaps(Map<String, Vertice> vertices1, Map<String, Aresta> arestas1,
-                      Map<String, Vertice> vertices2, Map<String, Aresta> arestas2){
+    public void initializeRotas(List<Routs> rotas) {
+        map.initializeRotas(rotas);
+    }    
+    
+    public void mergeMaps(Map<Integer, Vertice> vertices1, Map<String, Aresta> arestas1,
+                      Map<Integer, Vertice> vertices2, Map<String, Aresta> arestas2){
         mergeredMap = new MapVerticesEArestas();
         mergeredMap.merge(vertices1, arestas1, vertices2, arestas2);
     }
@@ -32,16 +36,16 @@ public class Grafo {
     }
     
     public Caminhos getPossiveisCaminhosMergered(MapVerticesEArestas map1, MapVerticesEArestas map2, String strOrigem, String strDestino){
-        mergeMaps(map1.getVertices(), map1.getAresstas(), map2.getVertices(), map2.getAresstas());
+        mergeMaps(map1.getVertices(), map1.getArestas(), map2.getVertices(), map2.getArestas());
         return getPossiveisCaminhos(mergeredMap, strOrigem, strDestino);
     }
     
     // ALGORITIMO PARA GERAR TODOS OS CAMINHOS
     private Caminhos getPossiveisCaminhos(MapVerticesEArestas map, String strOrigem, String strDestino){
         //pega o vertice de origem
-        Vertice origem = map.getVertice(strOrigem);
+        Vertice origem = map.getVerticeByEstado(strOrigem);
         //pega o vertice de destino
-        Vertice destino = map.getVertice(strDestino);
+        Vertice destino = map.getVerticeByEstado(strDestino);
         //Lista de caminhos possíveis
         List<List<Aresta>> aux = new ArrayList<>();
         //algoritimo de busca dos caminhos entre a origem e o destino
@@ -77,6 +81,5 @@ public class Grafo {
                 novo = null;
             }       
         }      
-    }
-    
+    }    
 }

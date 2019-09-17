@@ -4,11 +4,13 @@ import controller.ServerController;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.util.List;
 import model.Caminhos;
 import remoteMethods.RMIServerServer;
 import remoteMethods.ServerMethodsImple;
 import util.Grafo;
 import util.MapVerticesEArestas;
+import util.Routs;
 
 /**
  *
@@ -31,8 +33,11 @@ public class Facade {
     }
 
     public void initializeServer(int servidor) {
-        serverController.initializeServer(servidor);
-        myRMIServer = new RMIServerServer(serverController.getMyServerPort(), serverController.getMyServerName());
+        List<Routs> rotas = serverController.initializeServer(servidor);
+        myRMIServer = new RMIServerServer(  serverController.getMyHost(),
+                                            serverController.getMyServerPort(), 
+                                            serverController.getMyServerName());
+        grafo.initializeRotas(rotas);
     }
 
     public MapVerticesEArestas getGrafo() {

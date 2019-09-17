@@ -21,7 +21,7 @@ public class ServerCliente {
     }  
     
     public ServerMethodsImple lookupMethod() throws MalformedURLException, NotBoundException, RemoteException{
-        return (ServerMethodsImple) Naming.lookup("rmi://" + host + ":" + port + "/ServerService");
+        return (ServerMethodsImple) Naming.lookup("rmi://" + host + ":" + port + "/ServerService_" + nome);
     }
     
 }

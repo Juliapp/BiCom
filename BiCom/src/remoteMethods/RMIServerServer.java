@@ -15,16 +15,16 @@ import java.util.logging.Logger;
  */
 public class RMIServerServer {
 
-    public RMIServerServer(int port, String companhia){
+    public RMIServerServer(String host, int port, String companhia){
         try {
-            System.setProperty("java.rmi.server.hostname", "localhost");
+            System.setProperty("java.rmi.server.hostname", host);
             LocateRegistry.createRegistry(port);
             
             ServerMethodsImple smi = new ServerMethodsImple(companhia);
-            Naming.bind("ServerService", (Remote) smi);  
+            Naming.bind("ServerService" + companhia, (Remote) smi);  
             
             ServerUserImple sui = new ServerUserImple();
-            Naming.bind("UserService", (Remote) sui);
+            Naming.bind("UserService" + companhia, (Remote) sui);
             
         } catch (RemoteException | MalformedURLException | AlreadyBoundException ex) {
             Logger.getLogger(RMIServerServer.class.getName()).log(Level.SEVERE, null, ex);

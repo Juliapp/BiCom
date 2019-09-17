@@ -14,7 +14,7 @@ import model.Caminhos;
  * @author Juliana
  */
 public class ServerUserImple extends UnicastRemoteObject implements InterfaceServerUser{
-    private Facade facade;
+    private final Facade facade;
     public ServerUserImple() throws RemoteException{
         super();
         facade = Facade.getInstance();

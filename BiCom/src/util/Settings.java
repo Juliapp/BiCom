@@ -1,5 +1,8 @@
 package util;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *Classe de utilitários.
  * @author Juliana Aragão Pinto
@@ -7,9 +10,9 @@ package util;
 public class Settings {
     
     public enum Servidores{
-        AZUL("localhost", "Azul", 4000),
-        GOL("localhost", "Gol", 4001),
-        LATAM("localhost", "Latam", 1099);
+        AZUL("192.168.192.2", "Azul", 1097),
+        GOL("192.168.192.2", "Gol", 1098),
+        LATAM("192.168.192.2", "Latam", 1099);
         
         private final String host;
         private final String nome;
@@ -87,82 +90,184 @@ public class Settings {
         }
         
     }
-    /*
-    public enum Rotas{
-        ROTA1("Azul", ),
-        ROTA2("Azul", ),
-        ROTA3("Azul", ),
-        ROTA4("Azul", ),
-        ROTA5("Azul", ),
-        ROTA6("Azul", ),
-        ROTA7("Azul", ),
-        ROTA8("Azul", ),
-        ROTA9("Azul", ),
-        ROTA10("Azul", ),
-        ROTA11("Azul", ),
-        ROTA12("Azul", ),
-        ROTA13("Azul", ),
-        ROTA14("Azul", ),
-        ROTA15("Azul", ),
-        ROTA16("Azul", ),
-        ROTA17("Azul", ),
-        ROTA18("Azul", ),
-        ROTA19("Azul", ),
-        ROTA20("Azul", ),
-        ROTA21("Gol", ),
-        ROTA22("Gol", ),
-        ROTA23("Gol", ),
-        ROTA25("Gol", ),
-        ROTA26("Gol", ),
-        ROTA27("Gol", ),
-        ROTA28("Gol", ),
-        ROTA29("Gol", ),
-        ROTA30("Gol", ),
-        ROTA31("Gol", ),
-        ROTA32("Gol", ),
-        ROTA33("Gol", ),
-        ROTA34("Gol", ),
-        ROTA35("Gol", ),
-        ROTA36("Gol", ),
-        ROTA37("Gol", ),
-        ROTA38("Gol", ),
-        ROTA39("Gol", ),
-        ROTA40("Gol", ),
-        ROTA41("Latam", ),
-        ROTA42("Latam", ),
-        ROTA43("Latam", ),
-        ROTA44("Latam", ),
-        ROTA45("Latam", ),
-        ROTA46("Latam", ),
-        ROTA47("Latam", ),
-        ROTA48("Latam", ),
-        ROTA49("Latam", ),
-        ROTA50("Latam", ),
-        ROTA51("Latam", ),
-        ROTA52("Latam", ),
-        ROTA53("Latam", ),
-        ROTA54("Latam", ),
-        ROTA55("Latam", ),
-        ROTA56("Latam", ),
-        ROTA57("Latam", ),
-        ROTA58("Latam", ),
-        ROTA59("Latam", ),
-        ROTA60("Latam", );
-        
-        
-        private final String compainha;
-        private final String origem;
-        private final String destino;
+    
+    public enum RotasGol{
+        ROTA1(5, 25, 100.00),
+        ROTA2(25, 5, 100.00 ),
+        ROTA3(13, 19, 60.00),
+        ROTA4(19, 13, 60.00),
+        ROTA5(14, 9, 120.45),
+        ROTA6(9, 14, 120.45),
+        ROTA7(12, 24, 44.32),
+        ROTA8(24, 12, 44.32),
+        ROTA9(22, 14, 55.90),
+        ROTA10(14, 22, 55.90),
+        ROTA11(16, 6, 89.90),
+        ROTA12(6, 16, 89.90),
+        ROTA13(1, 11, 67.45),
+        ROTA14(11, 1, 67.45),
+        ROTA15(18, 23, 130.32),
+        ROTA16(23, 18, 130.32),
+        ROTA17(5, 17, 66.90),
+        ROTA18(17, 5, 66.90),
+        ROTA19(11, 9, 44.30),
+        ROTA20(9, 11, 44.30);
+
+        private final String companhia = "Gol";
+        private final int origem;
+        private final int destino;
         private final double preco;
 
-        private Rotas(String compainha, String origem, String destino, double preco) {
-            this.compainha = compainha;
+        private RotasGol(int origem, int destino, double preco) {
             this.origem = origem;
             this.destino = destino;
             this.preco = preco;
         }
 
-        
+        public String getCompanhia() {
+            return companhia;
+        }
+
+        public int getDestino() {
+            return destino;
+        }
+
+        public int getOrigem() {
+            return origem;
+        }
+
+        public double getPreco() {
+            return preco;
+        } 
     }
-    */
+
+
+    public static enum RotasAzul{
+        ROTA1(21, 16, 100.00),
+        ROTA2(16, 21, 100.00 ),
+        ROTA3(12, 25, 60.00),
+        ROTA4(25, 12, 60.00),
+        ROTA5(4, 23, 120.45),
+        ROTA6(23, 4, 120.45),
+        ROTA7(8, 5, 44.32),
+        ROTA8(5, 8, 44.32),
+        ROTA9(5, 26, 55.90),
+        ROTA10(26, 5, 55.90),
+        ROTA11(11, 12, 89.90),
+        ROTA12(12, 11, 89.90),
+        ROTA13(14, 3, 67.45),
+        ROTA14(3, 14, 67.45),
+        ROTA15(1, 4, 130.32),
+        ROTA16(4, 1, 130.32),
+        ROTA17(27, 10, 66.90),
+        ROTA18(10, 27, 66.90),
+        ROTA19(21, 5, 44.30),
+        ROTA20(5, 21, 44.30);
+
+        private final String companhia = "Azul";
+        private final int origem;
+        private final int destino;
+        private final double preco;
+
+        private RotasAzul(int origem, int destino, double preco) {
+            this.origem = origem;
+            this.destino = destino;
+            this.preco = preco;
+        }
+
+        public String getCompanhia() {
+            return companhia;
+        }
+
+        public int getDestino() {
+            return destino;
+        }
+
+        public int getOrigem() {
+            return origem;
+        }
+
+        public double getPreco() {
+            return preco;
+        }
+
+    }    
+
+
+    public enum RotasLatam{
+        ROTA1(13, 7, 100.00),
+        ROTA2(7, 13, 100.00 ),
+        ROTA3(6, 20, 60.00),
+        ROTA4(20, 6, 60.00),
+        ROTA5(15, 17, 120.45),
+        ROTA6(17, 15, 120.45),
+        ROTA7(14, 27, 44.32),
+        ROTA8(27, 14, 44.32),
+        ROTA9(18, 10, 55.90),
+        ROTA10(10, 18, 55.90),
+        ROTA11(22, 13, 89.90),
+        ROTA12(13, 22, 89.90),
+        ROTA13(22, 4, 67.45),
+        ROTA14(4, 22, 67.45),
+        ROTA15(23, 10, 130.32),
+        ROTA16(10, 23, 130.32),
+        ROTA17(19, 6, 66.90),
+        ROTA18(6, 19, 66.90),
+        ROTA19(6, 5, 44.30),
+        ROTA20(5, 6, 44.30);
+
+        private final String companhia = "Latam";
+        private final int origem;
+        private final int destino;
+        private final double preco;
+
+        private RotasLatam(int origem, int destino, double preco) {
+            this.origem = origem;
+            this.destino = destino;
+            this.preco = preco;
+        }
+
+        public String getCompanhia() {
+            return companhia;
+        }
+
+        public int getDestino() {
+            return destino;
+        }
+
+        public int getOrigem() {
+            return origem;
+        }
+
+        public double getPreco() {
+            return preco;
+        }
+    }    
+    
+    public static List<Routs> getRotasAzul(){
+        List<Routs> rotas = new ArrayList<>();
+        RotasAzul[] r = RotasAzul.values();
+        for (RotasAzul rotaAzul : r) {
+            rotas.add(new Routs(rotaAzul.getCompanhia(), rotaAzul.getOrigem(), rotaAzul.getDestino(), rotaAzul.getPreco()));
+        }
+        return rotas;
+    }
+    
+    public static List<Routs> getRotasGol(){
+        List<Routs> rotas = new ArrayList<>();
+        RotasGol[] r = RotasGol.values();
+        for (RotasGol rotaAzul : r) {
+            rotas.add(new Routs(rotaAzul.getCompanhia(), rotaAzul.getOrigem(), rotaAzul.getDestino(), rotaAzul.getPreco()));
+        }
+        return rotas;
+    }    
+    
+    public static List<Routs> getRotasLatam(){
+        List<Routs> rotas = new ArrayList<>();
+        RotasLatam[] r = RotasLatam.values();
+        for (RotasLatam rotaAzul : r) {
+            rotas.add(new Routs(rotaAzul.getCompanhia(), rotaAzul.getOrigem(), rotaAzul.getDestino(), rotaAzul.getPreco()));
+        }
+        return rotas;
+    }    
 }
