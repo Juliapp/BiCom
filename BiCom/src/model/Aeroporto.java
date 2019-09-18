@@ -1,10 +1,12 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Juliana
  */
-public class Aeroporto implements Comparable<Object>{
+public class Aeroporto implements Comparable, Serializable{
     private static final long serialVersionUID = 5L;
     private int id;
     private String estado;

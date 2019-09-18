@@ -1,5 +1,6 @@
 package util;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import model.Passagem;
@@ -8,7 +9,7 @@ import model.Passagem;
  *
  * @author Juliana
  */
-public class Aresta {
+public class Aresta implements Serializable{
     private static final long serialVersionUID = 3L;
     private Vertice origem;
     private Vertice destino;

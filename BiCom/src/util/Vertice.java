@@ -1,5 +1,6 @@
 package util;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import model.Aeroporto;
@@ -8,7 +9,7 @@ import model.Aeroporto;
  *
  * @author Juliana
  */
-public class Vertice {
+public class Vertice implements Serializable{
     private static final long serialVersionUID = 4L;
     private final Aeroporto aeroporto;
     private final List<Aresta> arestas;

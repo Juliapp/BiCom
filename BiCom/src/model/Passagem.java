@@ -1,11 +1,13 @@
 package model;
 
+import java.io.Serializable;
+
 
 /**
  *
  * @author Juliana
  */
-public class Passagem {
+public class Passagem implements Serializable{
     private static final long serialVersionUID = 6L;
     private final String companhia;
     private double preco;

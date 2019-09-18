@@ -1,5 +1,6 @@
 package util;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -11,7 +12,7 @@ import model.Passagem;
  *
  * @author Juliana
  */
-public class MapVerticesEArestas {
+public class MapVerticesEArestas implements Serializable {
     private static final long serialVersionUID = 10L;
     private final Map<Integer, Vertice> vertices;
     private final Map<String, Aresta> arestas;
