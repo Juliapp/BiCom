@@ -44,6 +44,7 @@ public class Grafo {
     private Caminhos getPossiveisCaminhos(MapVerticesEArestas map, String strOrigem, String strDestino){
         //pega o vertice de origem
         Vertice origem = map.getVerticeByEstado(strOrigem);
+        System.out.println(origem);
         //pega o vertice de destino
         Vertice destino = map.getVerticeByEstado(strDestino);
         //Lista de caminhos possíveis
