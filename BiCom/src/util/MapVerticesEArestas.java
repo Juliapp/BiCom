@@ -26,7 +26,7 @@ public class MapVerticesEArestas implements Serializable {
     
     private void initializeVertices(){
         for (Settings.EnumAeroportos a : Settings.EnumAeroportos.values()) {
-            vertices.put(a.getId(), new Vertice(new Aeroporto(a.getId(), a.getNome(), a.getEstado())));
+            vertices.put(a.getId(), new Vertice(new Aeroporto(a.getId(), a.getEstado(), a.getNome())));
         }          
     }
 
