@@ -68,8 +68,8 @@ public class Settings {
         TOCANTINS(27, "Tocantins", "Aeroporto de Palmas");
 
         private final int id;
-        private final String nome;
         private final String estado;
+        private final String nome;
         
         EnumAeroportos(int id, String estado, String nome) {
             this.id = id;
