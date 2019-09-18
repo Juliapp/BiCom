@@ -8,9 +8,9 @@ import java.io.Serializable;
  */
 public class Aeroporto implements Comparable, Serializable{
     private static final long serialVersionUID = 5L;
-    private int id;
-    private String estado;
-    private String nome;
+    private final int id;
+    private final String estado;
+    private final String nome;
 
     public Aeroporto(int id, String estado, String nome) {
         this.id = id;
@@ -22,16 +22,8 @@ public class Aeroporto implements Comparable, Serializable{
         return estado;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
     public String getNome() {
         return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     @Override
