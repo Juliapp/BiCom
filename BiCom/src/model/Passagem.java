@@ -35,4 +35,8 @@ public class Passagem implements Serializable{
         this.vagas = vagas;
     }
 
+    public String getCompanhia() {
+        return companhia;
+    }
+
 }
