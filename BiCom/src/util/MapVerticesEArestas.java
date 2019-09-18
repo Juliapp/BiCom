@@ -12,6 +12,7 @@ import model.Passagem;
  * @author Juliana
  */
 public class MapVerticesEArestas {
+    private static final long serialVersionUID = 10L;
     private final Map<Integer, Vertice> vertices;
     private final Map<String, Aresta> arestas;
 

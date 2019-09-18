@@ -6,8 +6,8 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
 import model.Caminhos;
+import remoteMethods.InterfaceServerServer;
 import remoteMethods.RMIServerServer;
-import remoteMethods.ServerMethodsImple;
 import util.Grafo;
 import util.MapVerticesEArestas;
 import util.Routs;
@@ -45,7 +45,7 @@ public class Facade {
     }
     
     public Caminhos getPossiveisCaminhosMergered(String partida, String chegada) throws NotBoundException, MalformedURLException, RemoteException{
-        ServerMethodsImple lookupMethod = serverController.getServerALookupMethod();
+        InterfaceServerServer lookupMethod = serverController.getServerALookupMethod();
         MapVerticesEArestas map1 = lookupMethod.getGrafo();
         lookupMethod = serverController.getServerBLookupMethod();
         MapVerticesEArestas map2 = lookupMethod.getGrafo();
@@ -53,7 +53,7 @@ public class Facade {
     }
     
     public MapVerticesEArestas tentativa() throws NotBoundException, MalformedURLException, RemoteException{
-        ServerMethodsImple lookupMethod = serverController.getServerALookupMethod();
+        InterfaceServerServer lookupMethod = serverController.getServerALookupMethod();
         return lookupMethod.getGrafo();
     }
 }

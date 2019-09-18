@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
+import remoteMethods.InterfaceServerServer;
 import remoteMethods.ServerCliente;
 import remoteMethods.ServerMethodsImple;
 import util.Routs;
@@ -58,11 +59,11 @@ public class ServerController {
         return myServer.getHost();
     }
 
-    public ServerMethodsImple getServerALookupMethod() throws NotBoundException, MalformedURLException, RemoteException{
+    public InterfaceServerServer getServerALookupMethod() throws NotBoundException, MalformedURLException, RemoteException{
         return serverA.lookupMethod();
     }
     
-    public ServerMethodsImple getServerBLookupMethod() throws NotBoundException, MalformedURLException, RemoteException{
+    public InterfaceServerServer getServerBLookupMethod() throws NotBoundException, MalformedURLException, RemoteException{
         return serverB.lookupMethod();
     }    
     
