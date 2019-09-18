@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import model.Aeroporto;
 import model.Passagem;
 
@@ -63,10 +64,10 @@ public class MapVerticesEArestas implements Serializable {
     }
     
     public Vertice getVerticeByEstado(String chave){
-        Collection<Vertice> aero = vertices.values();
-        for (Vertice vertice : aero) {
-            if(vertice.getAeroporto().getEstado().equalsIgnoreCase(chave)){
-                return vertice;
+        Set<Map.Entry<Integer, Vertice>> entrySet = vertices.entrySet();
+        for (Map.Entry<Integer, Vertice> entry : entrySet) {
+            if(entry.getValue().getAeroporto().getEstado().equalsIgnoreCase(chave)){
+                return entry.getValue();
             }
         }
         return null;
