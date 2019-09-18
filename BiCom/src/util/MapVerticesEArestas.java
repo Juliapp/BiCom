@@ -66,6 +66,7 @@ public class MapVerticesEArestas implements Serializable {
     public Vertice getVerticeByEstado(String chave){
         Set<Map.Entry<Integer, Vertice>> entrySet = vertices.entrySet();
         for (Map.Entry<Integer, Vertice> entry : entrySet) {
+            System.out.println(entry.getValue().getAeroporto().getEstado());
             if(entry.getValue().getAeroporto().getEstado().equalsIgnoreCase(chave)){
                 return entry.getValue();
             }
