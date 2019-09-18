@@ -10,9 +10,9 @@ import java.util.List;
 public class Settings {
     
     public enum Servidores{
-        AZUL("localhost", "Azul", 1099),
+        AZUL("172.16.103.6", "Azul", 1099),
         GOL("172.16.103.7", "Gol", 1099),
-        LATAM("172.16.103.231", "Latam", 1099);
+        LATAM("172.16.103.8", "Latam", 1099);
         
         private final String host;
         private final String nome;
