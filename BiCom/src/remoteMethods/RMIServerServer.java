@@ -21,11 +21,11 @@ public class RMIServerServer {
             LocateRegistry.createRegistry(port);
             
             ServerMethodsImple smi = new ServerMethodsImple(companhia);
-            Naming.bind("ServerService" + companhia, (Remote) smi);
+            Naming.bind("ServerService_" + companhia, (Remote) smi);
             System.out.println("Objeto a ser compartilhado entre os servidores passou pelo método de bind...");
             
             ServerUserImple sui = new ServerUserImple();
-            Naming.bind("UserService" + companhia, (Remote) sui);
+            Naming.bind("UserService_" + companhia, (Remote) sui);
             System.out.println("Objeto a ser compartilhado para os clientes passou pelo método de bind...");
             
             System.out.println("Servidor da companhia " + companhia + " pronto para trocar mensagens");

@@ -50,5 +50,10 @@ public class Facade {
         lookupMethod = serverController.getServerBLookupMethod();
         MapVerticesEArestas map2 = lookupMethod.getGrafo();
         return grafo.getPossiveisCaminhosMergered(map1, map2, partida, chegada);
-    }     
+    }
+    
+    public MapVerticesEArestas tentativa() throws NotBoundException, MalformedURLException, RemoteException{
+        ServerMethodsImple lookupMethod = serverController.getServerALookupMethod();
+        return lookupMethod.getGrafo();
+    }
 }

@@ -1,11 +1,16 @@
 package bicom;
 
 import facade.Facade;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class BiCom {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NotBoundException {
         int servidor = options();
         
         while (servidor < 1 || servidor > 3){
@@ -15,6 +20,12 @@ public class BiCom {
         
         Facade facade = Facade.getInstance();
         facade.initializeServer(servidor);
+        
+        try {
+            System.out.println(facade.tentativa());
+        } catch (MalformedURLException | RemoteException ex) {
+            Logger.getLogger(BiCom.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public static int options(){
