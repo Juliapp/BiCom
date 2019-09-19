@@ -12,7 +12,7 @@ public class BiCom {
         int servidor = options();
         
         while (servidor < 1 || servidor > 3){
-            System.out.println("Opção errada");
+            System.out.println("Opção errada.");
             servidor = options();
         }
         
