@@ -23,7 +23,8 @@ public class ServerUserImple extends UnicastRemoteObject implements InterfaceSer
     @Override
     public Caminhos getCaminhos(String origem, String destino) throws RemoteException{
         try {
-            return facade.getPossiveisCaminhosMergered(destino, origem);
+//            return facade.getPossiveisCaminhosMergered(origem, destino);
+            return facade.getPossiveisCaminhosAtual(origem, destino);
         } catch (NotBoundException | MalformedURLException ex) {
             Logger.getLogger(ServerUserImple.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -22,6 +22,7 @@ public class Grafo {
     }
     
     public void initializeRotas(List<Routs> rotas) {
+        System.out.println("Entrou na inicialização das rotas");
         map.initializeRotas(rotas);
     }    
     
@@ -44,7 +45,6 @@ public class Grafo {
     private Caminhos getPossiveisCaminhos(MapVerticesEArestas map, String strOrigem, String strDestino){
         //pega o vertice de origem
         Vertice origem = map.getVerticeByEstado(strOrigem);
-        System.out.println(origem);
         //pega o vertice de destino
         Vertice destino = map.getVerticeByEstado(strDestino);
         //Lista de caminhos possíveis
@@ -61,9 +61,9 @@ public class Grafo {
         //Lista das arestas que tem nesse vértice
         List<Aresta> refs = origem.getArestas();
         //itera as arestas que tem nesse vértice
-        for (Aresta aresta : refs) {       
+        for (Aresta aresta : refs) {     
             //confere se já passou por essa aresta
-            if(!array.contains(aresta)){
+            if(!containsAeroporto(array, aresta)){
                 //Cria um novo array de arestas pra cada aresta que ele percorrer baseado num array passado por parâmetro
                 ArrayList<Aresta> novo = new ArrayList<>(array);                   
                 //Adiciona essa aresta a nova lista de arestas
@@ -71,7 +71,9 @@ public class Grafo {
                 //referência para a outra ponda da aresta
                 Vertice proximo = aresta.getDestino();
                 //Se o próximo vértice for igual ao destino, ele adiciona a lista de aresta a lista de lista de caminhos
-                if(proximo.equals(destino)){      
+                System.out.println("esse = " + proximo.getAeroporto().getEstado() + " E o destino igual a = " + destino.getAeroporto().getEstado());
+                if(proximo.equals(destino)){ 
+                    System.out.println("ACHOU!!!");
                     listaDeLista.add(novo);
                 }
                 //Se esse nó não foi visitado ou não tem mais arestas seta a nova lista como nula para ser recolhida
@@ -82,5 +84,18 @@ public class Grafo {
                 novo = null;
             }       
         }      
-    }    
+    }
+    
+    private boolean containsAeroporto(ArrayList<Aresta> array, Aresta aresta){
+        int i = 0;
+        for (Aresta aresta1 : array) {
+            if(aresta1.equals(aresta)){
+                i++;
+                if(i == 2){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

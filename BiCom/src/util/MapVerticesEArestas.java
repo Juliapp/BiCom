@@ -1,7 +1,6 @@
 package util;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +25,6 @@ public class MapVerticesEArestas implements Serializable {
     
     private void initializeVertices(){
         for (Settings.EnumAeroportos a : Settings.EnumAeroportos.values()) {
-            System.out.println("Gravando estados: " + a.getEstado());
             vertices.put(a.getId(), new Vertice(new Aeroporto(a.getId(), a.getEstado(), a.getNome())));
         }          
     }
@@ -40,11 +38,15 @@ public class MapVerticesEArestas implements Serializable {
     }
     
     void initializeRotas(List<Routs> rotas) {
+        System.out.println("Entrou na segunda inicialização das rotas");
+        int i = 0;
         rotas.forEach((rota) -> {
             Vertice origem = vertices.get(rota.getOrigem());
             Vertice destino = vertices.get(rota.getDestino());
+            Aresta aresta = new Aresta(origem, destino, new Passagem(rota.getPreco(), rota.getCompanhia()));
             arestas.put(generateIdAresta(origem, destino),
-                    new Aresta(origem, destino, new Passagem(rota.getPreco(), rota.getCompanhia())));
+                    aresta);
+            origem.addAresta(aresta);
         });
     }
     

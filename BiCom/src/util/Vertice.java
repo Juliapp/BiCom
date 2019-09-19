@@ -31,8 +31,22 @@ public class Vertice implements Serializable{
         return arestas;
     }
 
-    public boolean addVertice(Aresta a){
+    public boolean addAresta(Aresta a){
         return arestas.add(a);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o instanceof Vertice){
+            Vertice v = (Vertice) o;
+            if(aeroporto.equals(v.getAeroporto())){
+                return true;
+            }
+
+        }
+        return false;
+    }
+    
+    
     
 }

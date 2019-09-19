@@ -9,17 +9,19 @@ import model.Passagem;
  *
  * @author Juliana
  */
-public class Aresta implements Serializable{
+public class Aresta implements Serializable, Comparable<Object>{
     private static final long serialVersionUID = 3L;
     private Vertice origem;
     private Vertice destino;
     private List<Passagem> passagens;
+    private final String id;
 
     public Aresta(Vertice origem, Vertice destino, Passagem passagem) {
         this.origem = origem;
         this.destino = destino;
         this.passagens = new ArrayList<>();
         this.passagens.add(passagem);
+        id = origem.getAeroporto().getEstado() + ":" + destino.getAeroporto().getEstado();
     }
         
     public void addPassagem(Passagem p){
@@ -49,5 +51,32 @@ public class Aresta implements Serializable{
     public void setPassagens(List<Passagem> passagens) {
         this.passagens = passagens;
     }
+    
+    public String getId(){
+        return id;
+    }
+
+    @Override
+    public int compareTo(Object t) {
+        if(t instanceof Aresta){
+            Aresta a = (Aresta) t;
+            if(id.equals(a.getId()))
+                return 0;
+        }
+        return -1;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o instanceof Aresta){
+            Aresta a = (Aresta) o;
+            if(id.contains(a.destino.getAeroporto().getEstado()) ||
+               id.contains(a.origem.getAeroporto().getEstado()))
+                return true;
+        }
+        return false;
+    }
+    
+    
 
 }

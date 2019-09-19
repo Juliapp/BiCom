@@ -52,6 +52,10 @@ public class Facade {
         return grafo.getPossiveisCaminhosMergered(map1, map2, partida, chegada);
     }
     
+        public Caminhos getPossiveisCaminhosAtual(String partida, String chegada) throws NotBoundException, MalformedURLException, RemoteException{
+        return grafo.getPossiveisCaminhosAtual(partida, chegada);
+    }
+    
     public MapVerticesEArestas tentativa() throws NotBoundException, MalformedURLException, RemoteException{
         InterfaceServerServer lookupMethod = serverController.getServerALookupMethod();
         return lookupMethod.getGrafo();
