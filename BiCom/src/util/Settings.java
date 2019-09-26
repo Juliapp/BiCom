@@ -10,15 +10,17 @@ import java.util.List;
 public class Settings {
     
     public enum Servidores{
-        AZUL("localhost", "Azul", 1099),
-        GOL("172.16.103.5", "Gol", 1099),
-        LATAM("172.16.103.8", "Latam", 1099);
+        AZUL(1, "172.16.103.4", "Azul", 1099),
+        GOL(2, "172.16.103.5", "Gol", 1099),
+        LATAM(3, "172.16.103.6", "Latam", 1099);
         
+        private final int id;
         private final String host;
         private final String nome;
         private final int port;
 
-        private Servidores(String host, String nome, int port) {
+        private Servidores(int id, String host, String nome, int port) {
+            this.id = id;
             this.host = host;
             this.nome = nome;
             this.port = port;
@@ -34,6 +36,10 @@ public class Settings {
 
         public int getPort() {
             return port;
+        }
+
+        public int getId() {
+            return id;
         }
     }
     
