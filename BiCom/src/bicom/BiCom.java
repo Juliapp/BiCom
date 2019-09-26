@@ -1,14 +1,11 @@
 package bicom;
 
 import facade.Facade;
-import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.UnknownHostException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import static util.Settings.Servidores.AZUL;
-import static util.Settings.Servidores.GOL;
-import static util.Settings.Servidores.LATAM;
+import java.util.Scanner;
 
 public class BiCom {
 
@@ -19,14 +16,12 @@ public class BiCom {
     }
     
     public static int options() throws UnknownHostException{
-        String hostAddress = InetAddress.getLocalHost().getHostAddress();
-        if(hostAddress.equals(AZUL.getHost())){
-            return AZUL.getId();
-        }
-        else if(hostAddress.equals(GOL.getHost())){
-            return GOL.getId();
-        }else
-            return LATAM.getId();
+        System.out.println("Qual servidor você deseja inicializar?");
+        System.out.println("1 - Azul");
+        System.out.println("2 - Gol");
+        System.out.println("3 - Latam");
+        Scanner in = new Scanner(System.in);
+        return in.nextInt();
     }
 
 }
