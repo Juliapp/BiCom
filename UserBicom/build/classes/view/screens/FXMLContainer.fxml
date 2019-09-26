@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="130.0" prefWidth="924.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controllers.FXMLCaminhoContainerController">
+   <children>
+      <Button layoutX="829.0" layoutY="83.0" mnemonicParsing="false" onAction="#comprarPassagem" text="Comprar" />
+      <ScrollPane layoutX="10.0" layoutY="9.0" prefHeight="113.0" prefWidth="799.0">
+         <content>
+            <HBox fx:id="hboxContainer" prefHeight="107.0" prefWidth="794.0" />
+         </content>
+      </ScrollPane>
+      <Label layoutX="822.0" layoutY="27.0" text="R$">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="preco" layoutX="850.0" layoutY="27.0" text="Label">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

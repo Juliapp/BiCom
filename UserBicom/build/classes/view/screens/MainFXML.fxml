@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="571.0" prefWidth="1045.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controllers.MainFXMLController">
+   <children>
+      <Pane prefHeight="114.0" prefWidth="1045.0" style="-fx-background-color: #9fa8da;">
+         <children>
+            <Label layoutX="533.0" layoutY="30.0" text="Partida">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button layoutX="966.0" layoutY="58.0" mnemonicParsing="false" onAction="#buscar" style="-fx-border-radius: 30; -fx-background-radius: 30;" text="Ok" />
+            <ChoiceBox fx:id="chegadaBox" layoutX="757.0" layoutY="58.0" prefWidth="150.0" style="-fx-background-radius: 30;" />
+            <ChoiceBox fx:id="partidaBox" layoutX="523.0" layoutY="58.0" prefWidth="150.0" style="-fx-background-radius: 30;" />
+            <Label layoutX="768.0" layoutY="30.0" text="Chegada">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <ScrollPane fx:id="ScrollPaneMain" layoutX="50.0" layoutY="113.0" prefHeight="407.0" prefWidth="926.0">
+         <content>
+            <VBox fx:id="mainVbox" prefHeight="200.0" prefWidth="921.0" />
+         </content></ScrollPane>
+   </children>
+</AnchorPane>
