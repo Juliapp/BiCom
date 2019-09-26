@@ -32,6 +32,12 @@ public class ServerUserImple extends UnicastRemoteObject implements InterfaceSer
         return null;
     }
 
+    /**
+     *Comprar trechos a partir de uma lista de ids
+     * @param trechos
+     * @return
+     * @throws RemoteException
+     */
     @Override
     public boolean comprarTrechos(List<String> trechos) throws RemoteException {
         try {

@@ -10,10 +10,15 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import util.MapVerticesEArestas;
 
+/**
+ *Classe de implementação dos serviços oferecidos pelo servidor
+ * @author Juliana Aragão Pinto
+ */
 public class ServerMethodsImple extends UnicastRemoteObject implements InterfaceServerServer{
     private static final long serialVersionUID = 1L;
     private final String companhia;
     private final Facade facade;
+    //trava para garantir a exclusão mutua
     private final Lock lock;
     
     public ServerMethodsImple(String companhia) throws RemoteException {
@@ -37,7 +42,8 @@ public class ServerMethodsImple extends UnicastRemoteObject implements Interface
     public boolean queroComprarTrecho(String companhia){
         Condition myCondition = lock.newCondition();
         try{
-            myCondition.await(15000L, TimeUnit.MILLISECONDS);
+            //condição de acesso para esse método = 30 segundos
+            myCondition.await(30000L, TimeUnit.MILLISECONDS);
             synchronized(this){
                 if(!facade.alguemQuer()){
                     facade.setPermissão(companhia);
@@ -52,11 +58,22 @@ public class ServerMethodsImple extends UnicastRemoteObject implements Interface
         return false;
     }
     
+    /**
+     *terminar a compra nesse servidor
+     * @param companhia
+     */
     @Override
     public void tirarPermissao(String companhia){
         facade.tirarPermissão(companhia);      
     }    
 
+    /**
+     *comprar esse trecho
+     * @param ids
+     * @param companhia
+     * @return
+     * @throws RemoteException
+     */
     @Override
     public boolean comprarTrecho(List<String> ids, String companhia) throws RemoteException {
         return facade.comprarTrechos(ids, companhia);

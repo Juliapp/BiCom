@@ -23,7 +23,7 @@ public class Facade {
     private final ServerController serverController;
     private RMIServerServer myRMIServer;
     private final Grafo grafo;
-    private final ControlerDeCompra comprar;
+    private final ControlerDeCompra comprarEmOutrosServidores;
     private final Semaforo semaforo;
     
     private static Facade facade;
@@ -31,7 +31,7 @@ public class Facade {
     public Facade() {
         serverController = new ServerController();
         grafo = new Grafo();
-        comprar = new ControlerDeCompra();
+        comprarEmOutrosServidores = new ControlerDeCompra();
         semaforo = new Semaforo();
     }
 
@@ -39,6 +39,10 @@ public class Facade {
         return (facade == null) ? facade = new Facade() : facade;
     }
 
+    /**
+     *Inicializa o servidor
+     * @param servidor
+     */
     public void initializeServer(int servidor) {
         List<Routs> rotas = serverController.initializeServer(servidor);
         myRMIServer = new RMIServerServer(  serverController.getMyHost(),
@@ -47,10 +51,24 @@ public class Facade {
         grafo.initializeRotas(rotas);
     }
 
+    /**
+     *pega o Mapa de arestas e vértices desse servidor
+     * @return
+     */
     public MapVerticesEArestas getGrafo() {
         return grafo.getGrafo();
     }
     
+    /**
+     *Pega os caminhos possíveis entre dois pontos de todos os servidores
+     * @param partida
+     * @param chegada
+     * @return
+     * @throws NotBoundException
+     * @throws MalformedURLException
+     * @throws RemoteException
+     * @throws CloneNotSupportedException
+     */
     public Caminhos getPossiveisCaminhosMergered(String partida, String chegada) throws NotBoundException, MalformedURLException, RemoteException, CloneNotSupportedException{
         InterfaceServerServer lookupMethod = null;
         InterfaceServerServer lookupMethod2 = null;
@@ -66,10 +84,28 @@ public class Facade {
         
     }
     
+    /**
+     *Pega os caminhos possíveis somente desse servidor
+     * @param partida
+     * @param chegada
+     * @return
+     * @throws NotBoundException
+     * @throws MalformedURLException
+     * @throws RemoteException
+     */
     public Caminhos getPossiveisCaminhosAtual(String partida, String chegada) throws NotBoundException, MalformedURLException, RemoteException{
         return grafo.getPossiveisCaminhosAtual(partida, chegada);
     }
 
+    /**
+     *verifica e faz a compra de uma lista de trechos a partes de uma lista de ids
+     * @param trechos
+     * @return
+     * @throws NotBoundException
+     * @throws MalformedURLException
+     * @throws RemoteException
+     * @throws CloneNotSupportedException
+     */
     public boolean comprarTrechos(List<String> trechos) throws NotBoundException, MalformedURLException, RemoteException, CloneNotSupportedException {
         if(!semaforo.alguemQuer()){
             semaforo.setPermissao(serverController.getMyServerName());
@@ -86,7 +122,7 @@ public class Facade {
 
             try{
                 List<Aresta> arestas = grafo.getVertices(lookupMethod, lookupMethod2, trechos);
-                List<String> realizarCompra = comprar.realizarCompra(serverController.getServerA(), serverController.getServerB(), arestas, semaforo, serverController.getMyServerName());
+                List<String> realizarCompra = comprarEmOutrosServidores.realizarCompraNosOutrosServidores(serverController.getServerA(), serverController.getServerB(), arestas, semaforo, serverController.getMyServerName());
                 return comprarTrechos(realizarCompra, serverController.getMyServerName());
             }catch(NullPointerException e){
                 return false;
@@ -98,22 +134,32 @@ public class Facade {
         return false;
     }
 
-    public String getPermissão() {
-        return semaforo.getPermissao();
-    }
-
     public void setPermissão(String permissao) {
         semaforo.setPermissao(permissao);
     }
     
+    /**
+     *tira a permissão do servidor x de ter acesso exclusivo
+     * @param permissao
+     */
     public void tirarPermissão(String permissao) {
         semaforo.tirarPermissao(permissao);
     }
     
+    /**
+     *checa se algum dos três servidores tem interesse em fazer a compra no momento
+     * @return
+     */
     public boolean alguemQuer(){
         return semaforo.alguemQuer();
     }
 
+    /**
+     *faz a compra dos trechos nessa companhia 
+     * @param ids
+     * @param companhia
+     * @return
+     */
     public boolean comprarTrechos(List<String> ids, String companhia) {
         if(semaforo.getPermissao().equalsIgnoreCase(companhia)){
             List<Aresta> arestasByIds = grafo.getArestasByIds(ids);
@@ -123,8 +169,9 @@ public class Facade {
                     return false;
                 }               
             }
+            return true;
         }
-        return true;
+        return false;
     }
     
 }

@@ -7,7 +7,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 /**
- *
+ *Acesso a um outro servidor como cliente
  * @author Juliana
  */
 public class ServerCliente {

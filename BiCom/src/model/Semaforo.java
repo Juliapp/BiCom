@@ -1,7 +1,7 @@
 package model;
 
 /**
- *
+ *Classe para garantir exclusividade de acesso durante uma compra
  * @author Juliana Aragão Pinto
  */
 public class Semaforo {

@@ -15,6 +15,13 @@ import java.util.logging.Logger;
  */
 public class RMIServerServer {
 
+    /**
+     *Classe do servidor RMI, que garante o set das propriedades do sistema, registra a porta
+     * do servidor, e cria os serviços para serem acessados pelos outros servidores e pelos usuários
+     * @param host
+     * @param port
+     * @param companhia
+     */
     public RMIServerServer(String host, int port, String companhia){
         try {
             System.setProperty("java.rmi.server.hostname", host);

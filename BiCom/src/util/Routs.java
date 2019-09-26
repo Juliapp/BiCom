@@ -1,7 +1,7 @@
 package util;
 
 /**
- *
+ *Classe auxiliar para carregar as rotas contidas no enumarador
  * @author Juliana Aragão Pinto
  */
 public class Routs {

@@ -6,6 +6,7 @@ import java.util.List;
 import model.Caminhos;
 import remoteMethods.InterfaceServerServer;
 /**
+ *Classe para manipulação do grafo
  *
  * @author Juliana
  */
@@ -29,16 +30,33 @@ public class Grafo {
         return new MapVerticesEArestas();
     }
     
+    /**
+     *pega os caminhos possíveis usando somente o servidor atual
+     * @param strOrigem
+     * @param strDestino
+     * @return
+     */
     public Caminhos getPossiveisCaminhosAtual(String strOrigem, String strDestino){
         return getPossiveisCaminhos(map, strOrigem, strDestino);
     }
     
+    /**
+     *pega os caminhos do grafo gerado por todos os servidores
+     * @param lookupMethod
+     * @param lookupMethod2
+     * @param partida
+     * @param chegada
+     * @return
+     * @throws RemoteException
+     * @throws CloneNotSupportedException
+     */
     public Caminhos getPossiveisCaminhosMergered(InterfaceServerServer lookupMethod, InterfaceServerServer lookupMethod2, String partida, String chegada) throws RemoteException, CloneNotSupportedException {
         mergeredMap = getGrafoTotal(lookupMethod, lookupMethod2);
         return getPossiveisCaminhos(mergeredMap, partida, chegada);
     }
     
-    public MapVerticesEArestas getGrafoTotal(InterfaceServerServer lookupMethod, InterfaceServerServer lookupMethod2) throws RemoteException, CloneNotSupportedException {
+    //faz o merge dos mapas
+    private MapVerticesEArestas getGrafoTotal(InterfaceServerServer lookupMethod, InterfaceServerServer lookupMethod2) throws RemoteException, CloneNotSupportedException {
         mergeredMap = (MapVerticesEArestas) map.clone();
         if(lookupMethod != null){
             mergeredMap.mergeOne(lookupMethod.getGrafo().getVertices(), lookupMethod.getGrafo().getArestas());
@@ -49,6 +67,15 @@ public class Grafo {
         return mergeredMap;
     }
     
+    /**
+     *pega todos os vértices de todos os servidores a partir de uma lista de ids
+     * @param lookupMethod
+     * @param lookupMethod2
+     * @param trechos
+     * @return
+     * @throws RemoteException
+     * @throws CloneNotSupportedException
+     */
     public List<Aresta> getVertices(InterfaceServerServer lookupMethod, InterfaceServerServer lookupMethod2, List<String> trechos) throws RemoteException, CloneNotSupportedException{
         mergeredMap = getGrafoTotal(lookupMethod, lookupMethod2);
         List<Aresta> arestas = new ArrayList<>();
@@ -108,6 +135,7 @@ public class Grafo {
         }
     }
     
+    //se a ocorrencia da aresta aparecer 2 vezes, quer dizer que ele está num loop
     private boolean containsAeroporto(ArrayList<Aresta> array, Aresta aresta){
         int i = 0;
         for (Aresta aresta1 : array) {
@@ -121,6 +149,11 @@ public class Grafo {
         return false;
     }
     
+    /**
+     *pega as arestas do mapa atual a partir de uma lista de Ids
+     * @param ids
+     * @return
+     */
     public List<Aresta> getArestasByIds(List<String> ids){
         return map.getArestas(ids);
     }

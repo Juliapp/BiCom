@@ -24,7 +24,12 @@ public class ServerController {
     public ServerController() {
     }
 
-        
+    /**
+     *Inicialização do servidor e das referências dos clientes
+     * retorno da lista de rotas do servidor escolhido
+     * @param servidor
+     * @return
+     */
     public List<Routs> initializeServer(int servidor) {
         switch (servidor) {
             case 1:
@@ -73,6 +78,5 @@ public class ServerController {
     public ServerCliente getServerB() {
         return serverB;
     }
-    
-    
+
 }
