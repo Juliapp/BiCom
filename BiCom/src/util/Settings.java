@@ -11,7 +11,7 @@ public class Settings {
     
     public enum Servidores{
         AZUL(1, "172.16.103.2", "Azul", 1099),
-        GOL(2, "172.16.103.6", "Gol", 1099),
+        GOL(2, "172.16.103.231", "Gol", 1099),
         LATAM(3, "172.16.103.7", "Latam", 1099);
         
         private final int id;
