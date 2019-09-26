@@ -6,7 +6,6 @@ import java.rmi.RemoteException;
 import java.util.List;
 import remoteMethods.InterfaceServerServer;
 import remoteMethods.ServerCliente;
-import remoteMethods.ServerMethodsImple;
 import util.Routs;
 import util.Settings;
 import static util.Settings.Servidores.AZUL;
@@ -65,6 +64,15 @@ public class ServerController {
     
     public InterfaceServerServer getServerBLookupMethod() throws NotBoundException, MalformedURLException, RemoteException{
         return serverB.lookupMethod();
-    }    
+    }
+
+    public ServerCliente getServerA() {
+        return serverA;
+    }
+
+    public ServerCliente getServerB() {
+        return serverB;
+    }
+    
     
 }

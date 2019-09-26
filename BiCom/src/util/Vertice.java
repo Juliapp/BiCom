@@ -47,6 +47,5 @@ public class Vertice implements Serializable{
         return false;
     }
     
-    
-    
+
 }

@@ -1,6 +1,7 @@
 package remoteMethods;
 
 import java.net.MalformedURLException;
+import java.rmi.ConnectException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -21,7 +22,17 @@ public class ServerCliente {
     }  
     
     public InterfaceServerServer lookupMethod() throws MalformedURLException, NotBoundException, RemoteException{
-        return (InterfaceServerServer) Naming.lookup("rmi://" + host + ":" + port + "/ServerService_" + nome);
+        try{
+            return (InterfaceServerServer) Naming.lookup("rmi://" + host + ":" + port + "/ServerService_" + nome);
+        }catch(ConnectException e){
+            System.err.println("O cliente " + nome + " não está disponível no momento ou não foi configurado de forma certa"
+                                 + " por favor, verifique os parâmetros da conexão");
+        }
+        return null;
+    }
+
+    public String getNome() {
+        return nome;
     }
     
 }

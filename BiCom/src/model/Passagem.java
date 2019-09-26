@@ -18,6 +18,14 @@ public class Passagem implements Serializable{
         this.preco = preco;
         this.vagas = 10;
     }
+    
+    public boolean comprarPassagem(){
+        if(vagas > 0){
+            vagas -= 1;
+            return true;
+        }
+        return false;
+    }
 
     public double getPreco() {
         return preco;

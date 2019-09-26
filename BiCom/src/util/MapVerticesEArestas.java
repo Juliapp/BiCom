@@ -1,6 +1,7 @@
 package util;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +13,7 @@ import model.Passagem;
  *
  * @author Juliana
  */
-public class MapVerticesEArestas implements Serializable {
+public class MapVerticesEArestas implements Serializable, Cloneable {
     private static final long serialVersionUID = 10L;
     private final Map<Integer, Vertice> vertices;
     private final Map<String, Aresta> arestas;
@@ -28,17 +29,13 @@ public class MapVerticesEArestas implements Serializable {
             vertices.put(a.getId(), new Vertice(new Aeroporto(a.getId(), a.getEstado(), a.getNome())));
         }          
     }
-
-    public void merge(Map<Integer, Vertice> vertices1, Map<String, Aresta> arestas1,
-                      Map<Integer, Vertice> vertices2, Map<String, Aresta> arestas2) {
-        vertices.putAll(vertices1);
-        vertices.putAll(vertices2);
-        arestas.putAll(arestas1);
-        arestas.putAll(arestas2);
+    
+    public void mergeOne(Map<Integer, Vertice> vertices, Map<String, Aresta> arestas){
+        this.vertices.putAll(vertices);
+        this.arestas.putAll(arestas);
     }
     
     void initializeRotas(List<Routs> rotas) {
-        System.out.println("Entrou na segunda inicialização das rotas");
         int i = 0;
         rotas.forEach((rota) -> {
             Vertice origem = vertices.get(rota.getOrigem());
@@ -52,6 +49,10 @@ public class MapVerticesEArestas implements Serializable {
     
     public String generateIdAresta(Vertice origem, Vertice destino){
         return origem.getAeroporto().getEstado() + ":" + destino.getAeroporto().getEstado();
+    }
+    
+    public Aresta getArestaByID(String id){
+        return arestas.get(id);
     }
 
     public Map<String, Aresta> getArestas() {
@@ -86,5 +87,19 @@ public class MapVerticesEArestas implements Serializable {
         return v.getArestas();
     }
 
+    
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }    
+
+    public List<Aresta> getArestas(List<String> ids) {
+        List<Aresta> list = new ArrayList<>();
+        for (String id : ids) {
+            list.add(arestas.get(id));
+        }
+        
+       return list;         
+    }
     
 }

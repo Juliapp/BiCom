@@ -23,6 +23,13 @@ public class Aresta implements Serializable, Comparable<Object>{
         this.passagens.add(passagem);
         id = origem.getAeroporto().getEstado() + ":" + destino.getAeroporto().getEstado();
     }
+    
+    public void comprarPassagem(){
+        passagens.get(0).comprarPassagem();
+        if(passagens.get(0).getVagas() <= 0){
+            passagens.remove(0);
+        }
+    }
         
     public void addPassagem(Passagem p){
         passagens.add(p);
